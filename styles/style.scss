@@ -1,0 +1,439 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", sans-serif;
+}  //mate有設字型時要連結字型
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+}
+
+header{
+    display: flex;
+    align-items: center; //設定header整體交錯軸線置中對齊
+    flex-wrap: wrap;  //設定要換行
+    //其他應用(鎖定標題列)
+    position: sticky;  //固定標題列
+    top: 0px;       //固定位置(離上方位置)
+    z-index: 3;    //標題列位於最上層
+    background-color: white;
+    box-shadow: 1px 1px 5px 1px #c4c4c4;
+
+    div.logo {
+        display: flex;
+        align-items: center;  //交錯軸線置中對齊
+        // flex-grow: 5; (伸展比)
+        // flex-shrink: 1; (縮放比)
+        // flex-basis: 400px; (基準值)
+        flex: 5 1 400px;  //可以直接簡寫 跟logo呼應(佔5等份)，
+        margin-left: 2rem;
+
+        img {
+            width: 6vw;
+            height: 6vh;
+        }
+    }
+
+    nav {
+        // flex-grow: 2; (伸展比)
+        // flex-shrink: 1; (縮放比)
+        // flex-basis: 400px; (基準值)
+        flex: 2 1 400px;  //可以直接簡寫 跟logo呼應(佔2等份)，
+        ul {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;  //每個方塊的左右平均留空
+        }
+
+        a {
+            color: #09777d;
+            text-decoration: none;  //去除文字底線
+            font-size: 1.35rem;
+        }
+    }
+}
+
+main{
+    section.backImage{
+        background-image: url("../Pictures/img02-1.jpg");
+        min-height: 90vh;  //圖的最小高度
+        width: 100%;
+        background-size: cover;  //背景圖完全貼合
+        background-position: center;
+        position: relative;  
+        z-index: 1;  //z軸的層次
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        h3{
+            font-size: 3.5rem;
+            color: white;
+            margin: 2rem 0rem;
+        }
+
+        button.start{  //設計按鈕
+            background-color: #54b65f;
+            color: white;
+            font-size: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;  //超連結圖案(指標型)
+        }
+
+        div.filter{  //設定一張透明圖層蓋在上面(做背景圖片顏色調整用)
+        background-color: rgba(236, 225, 225, 0.2);
+        width: 100%;
+        min-height: 90vh;
+        position: absolute;  //要先設上一層的定位點(section.backImage)才有所依據,為了使文字及按鈕浮在上層(才能被使用)
+        top: 0;
+        z-index: -1;  //一定要負數才行沈到下面去
+        }
+    }
+
+    //設定第二頁(圖片分三欄)
+    section.second{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        h2{
+            font-size: 2rem;
+            margin: 2rem ;
+        }
+
+        section.cards{
+        display: flex;
+        // border: 2px solid red;
+        width: 80%;
+        min-height: 80vh;  //因手機版foorter會跑掉,所以才改成min-height(最小高度)
+        flex-wrap: wrap;
+
+            div.card{
+                // border: 1px solid blue;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                padding: 1rem;
+                flex: 1 1 300px;
+            
+                div.image-container{  //做圖片動畫特效
+                    overflow: hidden;  //溢出的部份隱藏起來
+                    width: 20vw;
+                    height: 20vw;
+                    border-radius: 50%;
+
+                    img{
+                    width: 20vw;
+                    height: 20vw;
+                    border-radius: 50%;
+                    transition: all 0.2s;  //圖片動畫效果 0.2秒
+                    }
+
+                    img:hover{
+                        transform: scale(1.2);  //圖片放大1.2倍動畫
+                }
+                }
+
+                h4{
+                    font-size: 1.75rem;
+                    color: #075e40;
+                }
+
+                p{
+                    font-size: 1.2rem;
+                }
+
+                a{
+                    text-decoration: none;
+                    border-radius: 15px;
+                    padding: 1rem 1.2rem;
+                    background-color: #09777d;
+                    color: white;
+                    font-size: 1.25rem;
+                }
+            }
+        }
+    }
+}
+
+footer{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    min-height: 40vh;
+    justify-content: space-around;
+    background-color: rgb(207,207,207);
+
+    div.logo{
+        display: flex;
+        align-items: center;
+        img{
+            width: 6vw;
+            height: 6vw;
+        }
+    }
+
+    nav{
+        width: 30%;
+
+        ul{
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+            width: 100%;
+            flex-wrap: wrap;
+
+            li{
+                flex-basis: 400px;
+                p{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 1.2rem;
+                    font-weight: 300;
+                    
+                }
+            }
+        }
+    }
+
+    section.links{
+        a{
+            margin: 0 1rem;
+            img{
+                width: 5vw;
+                height: 5vw;
+            }
+        }
+    }
+}
+//logo圖檔響應式設計(header部份隨機器大小縮放)
+@media screen and (max-width: 550px){
+  header{
+    div.logo{
+        margin-left: 0.5rem;
+        img{
+            width: 15vw;
+            height: 15vh;
+        }
+    }
+  }
+  
+  footer{
+    div.logo{
+        img{
+            width: 15vw;
+            height: 15vw;
+        }
+    }
+    section.links{
+    margin-top: 1rem;
+    a{
+        img{
+            width: 10vw;
+            height:10vh;
+
+        }
+    }
+    }
+  }
+
+}
+
+@media screen and (max-width:700px){
+    main{
+        section.second{
+            section.cards{
+                div.card{
+                    img{
+                        width: 40vw;
+                        height: 40vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//scrollbar css(捲軸設定,可以直接去官網查→複製下來用)
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(207,207,207);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(58, 193, 170);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(12, 97, 105);
+  }
+
+  .login{
+    margin: 5% auto;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(148, 202, 249);
+    padding-top: 40px;
+
+    h2{
+        color: blue;
+        padding-bottom: 2rem;
+    }
+    .member{
+        font-size: 1.2rem;
+        padding-bottom: 0.75rem;
+    }
+    .password{
+        font-size: 1.2rem;
+        padding-bottom: 2rem;
+    }
+    #button{
+        width: 80px;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+  }
+
+  section.backImage2{
+    background-image: url("../Pictures/img06.jpg");
+    min-height: 50vh;  //圖的最小高度
+    width: 100%;
+    background-size: cover;  //背景圖完全貼合
+    background-position: center;
+    position: relative;  
+    z-index: 1;  //z軸的層次
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    h4{
+        font-size: 2rem;
+        color: rgb(27, 8, 243);
+        margin: 2.5rem 0rem;
+    }
+    ul{
+        list-style-type: none;
+        li{
+            color: rgb(254, 253, 253);
+            font-size: 1.2rem;
+        }
+    }
+  }
+  
+  section.second2{
+    .sec1{
+        h2{
+            color: #056e3f;
+            font-size: 2rem;
+            text-align: center;
+            background-color: rgb(249, 180, 95);
+            padding: 0.5rem;
+        }
+    }
+    .sec2{
+        border: 1px solid blue;
+        width: 80%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+
+
+        .sec2-1{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid red;
+            margin: 20px;
+            
+
+            .but1{
+                width: 200px;
+                height: 150px;
+                font-size: 2rem;
+                background-color: aqua;
+                border-radius: 50%;
+                display: block;
+                margin: auto 20px;
+            }
+
+            .tx1{
+                width: 60%;
+                margin-left: 20px;
+                font-size: 1.5rem;
+                margin: auto 20px;
+                }
+            }
+        }
+
+        .sec2-2{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid rgb(42, 26, 194);
+            margin: 20px  ;
+
+            .but2{
+                width: 200px;
+                height: 150px;
+                font-size: 1.5rem;
+                background-color: rgb(202, 107, 221);
+                border-radius: 50%;
+                display: block;
+                margin: auto 20px;
+            }
+            .tx2{
+                width: 60%;
+                margin-left: 20px;
+                font-size: 1.2rem;
+                ul{
+                list-style-type: none;
+                    }
+
+                    }
+
+            }
+            .sec2-3{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                border: 1px solid rgb(42, 26, 194);
+                margin: 20px  ;
+    
+                .but3{
+                    width: 200px;
+                    height: 150px;
+                    font-size: 1.5rem;
+                    background-color: rgb(148, 212, 88);
+                    border-radius: 50%;
+                    display: block;
+                    margin: auto 20px;
+                }
+                .tx3{
+                    width: 60%;
+                    margin-left: 20px;
+                    font-size: 1.2rem;
+                    }
+    
+                }
+        }
+
+
